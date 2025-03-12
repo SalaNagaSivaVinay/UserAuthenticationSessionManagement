@@ -6,7 +6,7 @@ const redisClient = require('./config/redis');
 const authRoutes = require('./routes/authRoutes');
 const errorHandler = require('./middleware/errorHandler');
 
-const app = express();  // Ensure `app` is declared as an instance of Express
+const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
@@ -23,9 +23,7 @@ app.use(errorHandler);
 // Connect to Database and Redis
 (async () => {
     try {
-        await connectDB(); // Ensures MongoDB is connected before starting the server
-
-        // Redis Client Events
+        await connectDB(); // Ensure MongoDB is connected before starting the server
         redisClient.on('connect', () => console.log('✅ Redis Client Connected'));
         redisClient.on('error', (err) => console.error(`❌ Redis Client Error: ${err}`));
 

@@ -16,4 +16,4 @@ app.use('/auth', authRoutes);
 // Error Handling Middleware
 app.use(errorHandler);
 
-module.exports = app;  // Export for index.js to import
+module.exports = app; // Export for index.js to import
