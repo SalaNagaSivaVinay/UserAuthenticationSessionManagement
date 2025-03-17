@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express'); 
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes');
 const errorHandler = require('./middleware/errorHandler');
@@ -27,6 +27,11 @@ redisClient.on('error', (err) => console.error('Redis Client Error', err));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// **Home Route (Fix for `Cannot GET /` error)**
+app.get('/', (req, res) => {
+    res.send('Welcome to the User Authentication System!');
+});
 
 // Routes
 app.use('/auth', authRoutes);
